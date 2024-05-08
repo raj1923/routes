@@ -1,8 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { Auth } from "./Auth";
 
 const Navbar =()=>
     {
+        const {authuser, logout} = Auth();
+        
         return <div className="card">
             <nav>
             <ul>
@@ -11,6 +14,10 @@ const Navbar =()=>
                 <li><NavLink to='/Contact'>Contact </NavLink></li>
                 <li><NavLink to='/Projects'>Projects</NavLink></li>
                 <li><NavLink to='/Users'>Users</NavLink></li>
+                 {authuser ? (
+                     <li><NavLink to='/Logout' onClick={logout}>Logout</NavLink></li>
+                    ) : <li><NavLink to='/Login'>Login</NavLink></li>}
+
             </ul>
     
             </nav>
